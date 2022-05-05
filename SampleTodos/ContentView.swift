@@ -7,16 +7,33 @@
 
 import SwiftUI
 
+struct TaskData: Identifiable {
+    var title: String
+    var completed: Bool
+    var id = UUID()
+}
+
 struct ContentView: View {
-    let taskData = ["ジョギングする", "お花に水をやる", "部屋の掃除をする", "本を読む"]
+    @State var taskData = [
+        TaskData(title: "ジョギングする", completed: false),
+        TaskData(title: "お花に水をやる", completed: false),
+        TaskData(title: "部屋の掃除をする", completed: false),
+        TaskData(title: "本を読む", completed: false)
+    ]
     
     var body: some View {
         NavigationView {
             List(0..<taskData.count, id:\.self) { index in
-                HStack {
-                    Image(systemName: "circle")
-                    Text(taskData[index])
+                Button(action: {
+                    print("セルが押されたよ")
+                    taskData[index].completed.toggle()
+                }) {
+                    HStack {
+                        Image(systemName: taskData[index].completed ? "checkmark.circle.fill" : "circle")
+                        Text(taskData[index].title)
+                    }
                 }
+                .foregroundColor(.black)
             }
             .navigationTitle("ToDoリスト")
         }
