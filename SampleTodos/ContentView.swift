@@ -9,8 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            List {
+                Text("ジョギングする")
+                Text("お花に水をやる")
+                Text("部屋の掃除をする")
+                Text("本を読む")
+            }
+            .navigationTitle("ToDoリスト")
+        }
     }
 }
 
