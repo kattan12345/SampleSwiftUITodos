@@ -11,10 +11,22 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                Text("ジョギングする")
-                Text("お花に水をやる")
-                Text("部屋の掃除をする")
-                Text("本を読む")
+                HStack {
+                    Image(systemName: "circle")
+                    Text("ジョギングする")
+                }
+                HStack {
+                    Image(systemName: "checkmark.circle.fill")
+                    Text("お花に水をやる")
+                }
+                HStack {
+                    Image(systemName: "checkmark.circle.fill")
+                    Text("部屋の掃除をする")
+                }
+                HStack {
+                    Image(systemName: "circle")
+                    Text("本を読む")
+                }
             }
             .navigationTitle("ToDoリスト")
         }
